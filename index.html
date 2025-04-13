@@ -1,0 +1,144 @@
+<!-- Це HTML файл -->
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Мій Веб-Сайт</title>
+    <link rel="stylesheet" href="styles/styles.css" />
+  </head>
+  <body>
+    <div class="matrix"></div>
+    <!-- Контейнер для фона "Матрицы" -->
+    <header>
+      <div class="container">
+        <h1>Привіт! Мене звати Костянтин</h1>
+        <p class="subtitle">Програміст | Навчаюсь мережевої безпеки</p>
+        <p class="description">
+          Моя мета — допомогти компаніям захищати свої дані та оптимізувати
+          робочі процеси.
+        </p>
+        <div class="header-contacts">
+          <p>Email: <a href="mailto:kostya_eu@ukr.net">kostya_eu@ukr.net</a></p>
+          <p>
+            Telegram:
+            <a href="https://t.me/kosty_ua" target="_blank">t.me/kosty_ua</a>
+          </p>
+          <p>
+            LinkedIn:
+            <a href="https://www.linkedin.com/in/kostya-ua" target="_blank"
+              >www.linkedin.com/in/kostya-ua</a
+            >
+          </p>
+        </div>
+      </div>
+    </header>
+    <main class="container">
+      <section id="about">
+        <h2>Про мене</h2>
+        <p>
+          Мене звати Костянтин, і я займаюся програмуванням, зокрема C та
+          Python. Особливо цікавлюся мереже́вою безпекою, аналізом вразливостей
+          та створенням захищених систем.
+        </p>
+        <p>
+          Окрім технологій, я вивчаю Біблію та відвідую церкву, що допомагає
+          мені розвиватися не лише професійно, а й духовно.
+        </p>
+        <p>
+          Я прагну постійного розвитку та відкритий до нових викликів. Якщо у
+          вас є цікаві проєкти або пропозиції щодо співпраці — буду радий
+          поспілкуватися!
+        </p>
+      </section>
+      <section id="objective">
+        <h2>Мета</h2>
+        <p>
+          Шукаю можливість приєднатися до команди програмістів у динамічній IT
+          компанії, де зможу використовувати свої знання з програмування (C,
+          Python) та розвивати навички в області мережевої безпеки, розв'язуючи
+          реальні задачі.
+        </p>
+      </section>
+      <section id="qualifications">
+        <h2>Кваліфікація та навички</h2>
+        <p>
+          Програмування: Навчався основам C та Python. Володіння основами
+          об'єктно-орієнтованого програмування.
+        </p>
+        <p>
+          Мережеві технології: Основи мережевої безпеки, налаштування та
+          адміністрування мереж.
+        </p>
+        <p>Технології: Git, Linux.</p>
+        <p>Інструменти: IDE (Visual Studio) версій (Git).</p>
+        <p>
+          Особисті якості: Аналітичне мислення, вміння працювати в команді,
+          орієнтація на результат.
+        </p>
+      </section>
+      <section id="additional-skills">
+        <h2>Додаткові навички</h2>
+        <p>Базові знання бібліотек Python (NumPy, Pandas, TensorFlow).</p>
+        <p>Основи тестування програмного забезпечення.</p>
+        <p>Проблеми з інформаційною безпекою та методи їх вирішення.</p>
+      </section>
+      <section id="portfolio">
+        <h2>Портфоліо</h2>
+        <p>Python. Аналіз даних</p>
+        <p>Проект з мережевої безпеки</p>
+        <p>Система моніторингу вразливостей</p>
+      </section>
+      <section id="contact">
+        <h2>Контакти</h2>
+        <p>📩 Контакти:</p>
+        <p>Email: <a href="mailto:kostya_eu@ukr.net">kostya_eu@ukr.net</a></p>
+        <p>
+          LinkedIn:
+          <a href="https://www.linkedin.com/in/kostya-ua" target="_blank"
+            >www.linkedin.com/in/kostya-ua</a
+          >
+        </p>
+        <p>
+          Telegram:
+          <a href="https://t.me/kosty_ua" target="_blank">t.me/kosty_ua</a>
+        </p>
+        <a
+          href="https://freelancehunt.com/freelancer/kostya_eu.html?from=shield&r=6X15Q"
+          target="_blank"
+        >
+          <img
+            src="https://freelancehunt.com/shields/display/id/1648067/type/rating?style=plastic&amp;lang=uk&amp;showLogin=1"
+            alt="Freelancehunt — простий та чесний фриланс"
+          />
+        </a>
+      </section>
+    </main>
+    <footer>
+      <p>
+        &copy; 2025 р. |
+        <a href="https://github.com/kostya-it-ua" target="_blank">GitHub</a> |
+        <a href="https://www.linkedin.com/in/kostya-ua" target="_blank"
+          >LinkedIn</a
+        >
+        |
+        <a href="https://t.me/kosty_ua" target="_blank">Telegram</a>
+      </p>
+    </footer>
+    <script>
+      const matrix = document.querySelector(".matrix");
+      const columns = Math.floor(window.innerWidth / 16);
+      const characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+      for (let i = 0; i < columns * 20; i++) {
+        const span = document.createElement("span");
+        span.style.left = `${(i % columns) * 16}px`;
+        span.textContent =
+          characters[Math.floor(Math.random() * characters.length)];
+        span.style.animationDelay = `${Math.random() * 3}s`;
+        span.style.animationDuration = `${Math.random() * 2 + 1}s`;
+        matrix.appendChild(span);
+      }
+    </script>
+  </body>
+</html>
