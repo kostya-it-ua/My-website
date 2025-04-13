@@ -30,6 +30,11 @@
 
       .content {
         z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
         padding: 20px;
       }
 
@@ -40,14 +45,14 @@
 
       p {
         font-size: 1.2rem;
-        margin: 15px 0;
+        margin: 0;
       }
 
       .buttons {
-        margin-top: 20px;
         display: flex;
         flex-direction: column;
         gap: 15px;
+        margin-top: 20px;
       }
 
       .pill {
@@ -92,6 +97,21 @@
         .pill {
           padding: 15px 30px;
           font-size: 1.2rem;
+        }
+      }
+
+      @media (max-width: 767px) {
+        h1 {
+          font-size: 2rem;
+        }
+
+        p {
+          font-size: 1rem;
+        }
+
+        .pill {
+          font-size: 0.9rem;
+          padding: 10px 15px;
         }
       }
     </style>
