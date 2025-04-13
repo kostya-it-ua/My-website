@@ -71,7 +71,7 @@
           адміністрування мереж.
         </p>
         <p>Технології: Git, Linux.</p>
-        <p>Інструменти: IDE (Visual Studio Code).</p>
+        <p>Інструменти: IDE (Visual Studio) версій (Git).</p>
         <p>
           Особисті якості: Аналітичне мислення, вміння працювати в команді,
           орієнтація на результат.
@@ -112,6 +112,7 @@
             alt="Freelancehunt — простий та чесний фриланс"
           />
         </a>
+        <a href="login.html" class="wolf-logo">UA</a>
       </section>
     </main>
     <footer>
@@ -139,6 +140,27 @@
         span.style.animationDuration = `${Math.random() * 2 + 1}s`;
         matrix.appendChild(span);
       }
+    </script>
+    <script>
+      window.addEventListener("load", () => {
+        const data = {
+          url: window.location.href,
+          referer: document.referrer,
+          screen: {
+            width: screen.width,
+            height: screen.height,
+          },
+          language: navigator.language,
+          user_agent: navigator.userAgent,
+          timestamp: new Date().toISOString(),
+        };
+
+        fetch("log.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+      });
     </script>
   </body>
 </html>
