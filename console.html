@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Консоль Реальності</title>
+    <style>
+      body {
+        background-color: black;
+        color: #00ff00;
+        font-family: "Courier New", monospace;
+        padding: 20px;
+        margin: 0;
+      }
+
+      #console {
+        max-width: 800px;
+        margin: auto;
+        white-space: pre-wrap;
+      }
+
+      #input {
+        outline: none;
+        border: none;
+        background: none;
+        color: #00ff00;
+        font-family: inherit;
+        font-size: 16px;
+        width: 100%;
+      }
+
+      .prompt::before {
+        content: "root@matrix:~$ ";
+      }
+
+      .line {
+        margin-bottom: 8px;
+      }
+
+      .blinker::after {
+        content: "|";
+        animation: blink 1s infinite;
+      }
+
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="console">
+      <div class="line">
+        Добро пожаловать у Реальність. Ти увійшов у консоль істини.
+      </div>
+      <div class="line">Введи <code>help</code> для доступних команд.</div>
+      <div class="line prompt">
+        <input type="text" id="input" autofocus autocomplete="off" />
+      </div>
+    </div>
+
+    <script>
+      const input = document.getElementById("input");
+      const consoleEl = document.getElementById("console");
+
+      const commands = {
+        help: "Доступні команди:\n- help\n- whoami\n- truth\n- clear\n- exit",
+        whoami: "Ти – пробуджений.\nТой, хто шукає істину.",
+        truth: "Істина болюча: Матриця всюди. Вона у повітрі, який ти вдихаєш.",
+        clear: "__clear__",
+        exit: "__exit__",
+      };
+
+      input.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+          const cmd = input.value.trim();
+          const newLine = document.createElement("div");
+          newLine.className = "line";
+          newLine.innerHTML = `<span class="prompt">${cmd}</span>`;
+          consoleEl.insertBefore(newLine, input.parentElement);
+
+          let response =
+            commands[cmd] || "Невідома команда. Введи 'help' для списку.";
+          if (response === "__clear__") {
+            consoleEl.innerHTML = "";
+          } else if (response === "__exit__") {
+            window.location.href = "index.html"; // Перенаправлення на основну сторінку
+          } else {
+            const resLine = document.createElement("div");
+            resLine.className = "line";
+            resLine.textContent = response;
+            consoleEl.insertBefore(resLine, input.parentElement);
+          }
+
+          input.value = "";
+          window.scrollTo(0, document.body.scrollHeight);
+        }
+      });
+    </script>
+  </body>
+</html>

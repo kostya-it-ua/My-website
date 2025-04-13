@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Темрява Матриці</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        color: #fff;
+        text-align: center;
+        background: black;
+        overflow: hidden;
+      }
+
+      canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+
+      .ua-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        padding: 10px 20px;
+        font-size: 1rem;
+        font-weight: bold;
+        color: rgba(255, 255, 255, 0.7); /* Напівпрозорий текст */
+        background-color: transparent; /* Прозоре тло */
+        border: none; /* Без окантовки */
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s ease, color 0.3s ease,
+          transform 0.3s ease;
+        z-index: 2;
+      }
+
+      .ua-button:hover {
+        background-color: rgba(
+          255,
+          255,
+          255,
+          0.1
+        ); /* Легке затемнення при наведенні */
+        color: rgba(255, 255, 255, 1); /* Повністю білий текст при наведенні */
+        transform: scale(1.1);
+      }
+
+      h1 {
+        margin-top: 20%;
+        font-size: 3rem;
+        color: #e63946; /* Червоний колір */
+      }
+
+      p {
+        font-size: 1.5rem;
+        margin: 20px 0;
+        color: #10b981; /* Зелений колір */
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="matrix"></canvas>
+    <a href="index.html" class="ua-button">UA</a>
+    <h1>Світло істини згасло</h1>
+    <p>Ти повернувся до темряви. Матриця вдячна за твій вибір.</p>
+    <script>
+      const canvas = document.getElementById("matrix");
+      const ctx = canvas.getContext("2d");
+
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      const fontSize = 16;
+      const columns = Math.floor(canvas.width / fontSize);
+      const drops = Array(columns).fill(0);
+
+      function drawMatrix() {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = "#10b981"; // Зелений колір символів
+        ctx.font = `${fontSize}px monospace`;
+
+        drops.forEach((y, index) => {
+          const text =
+            characters[Math.floor(Math.random() * characters.length)];
+          const x = index * fontSize;
+          ctx.fillText(text, x, y * fontSize);
+
+          if (y * fontSize > canvas.height && Math.random() > 0.975) {
+            drops[index] = 0;
+          }
+          drops[index]++;
+        });
+      }
+
+      setInterval(drawMatrix, 50);
+
+      // Оновлення розмірів canvas при зміні розміру вікна
+      window.addEventListener("resize", () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
+    </script>
+  </body>
+</html>

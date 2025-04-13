@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Матриця</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        color: #fff;
+        background: black;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+      }
+
+      canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+
+      .content {
+        z-index: 1;
+      }
+
+      h1 {
+        font-size: 3rem;
+        color: #10b981;
+      }
+
+      p {
+        font-size: 1.5rem;
+        margin: 20px 0;
+      }
+
+      .buttons {
+        margin-top: 20px;
+      }
+
+      .pill {
+        display: inline-block;
+        padding: 15px 30px;
+        margin: 10px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #fff;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .pill.red {
+        background-color: #e63946;
+        box-shadow: 0 0 10px #e63946;
+      }
+
+      .pill.red:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 20px #e63946;
+      }
+
+      .pill.blue {
+        background-color: #457b9d;
+        box-shadow: 0 0 10px #457b9d;
+      }
+
+      .pill.blue:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 20px #457b9d;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="matrix"></canvas>
+    <div class="content">
+      <h1>Зроби свій вибір</h1>
+      <p>Усе твоє життя привело тебе до цієї миті.</p>
+      <p>Перед тобою — два шляхи.</p>
+      <p>Один веде до правди, інший — до забуття.</p>
+      <p>
+        <strong>Червона пігулка</strong> — це Пробудження.<br />
+        Ти побачиш світ таким, яким він є насправді.<br />
+        Біль, хаос, свобода — але справжні.
+      </p>
+      <p>
+        <strong>Синя пігулка</strong> — це Забуття.<br />
+        Ти прокинешся у своєму ліжку й повіриш у те, що хочеш.<br />
+        Комфорт, спокій, контроль — але ілюзія.
+      </p>
+      <div class="buttons">
+        <a href="light.html" class="pill red">Червона</a>
+        <a href="dark.html" class="pill blue">Синя</a>
+      </div>
+    </div>
+    <script>
+      const canvas = document.getElementById("matrix");
+      const ctx = canvas.getContext("2d");
+
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      const fontSize = 16;
+      const columns = Math.floor(canvas.width / fontSize);
+      const drops = Array(columns).fill(0);
+
+      function drawMatrix() {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = "#10b981"; // Зелений колір символів
+        ctx.font = `${fontSize}px monospace`;
+
+        drops.forEach((y, index) => {
+          const text =
+            characters[Math.floor(Math.random() * characters.length)];
+          const x = index * fontSize;
+          ctx.fillText(text, x, y * fontSize);
+
+          if (y * fontSize > canvas.height && Math.random() > 0.975) {
+            drops[index] = 0;
+          }
+          drops[index]++;
+        });
+      }
+
+      setInterval(drawMatrix, 50);
+
+      // Оновлення розмірів canvas при зміні розміру вікна
+      window.addEventListener("resize", () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
+    </script>
+  </body>
+</html>

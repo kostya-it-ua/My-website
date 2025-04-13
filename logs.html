@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Логи відвідувачів</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 18px;
+        text-align: left;
+      }
+      table th,
+      table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+      table th {
+        background-color: #10b981;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Логи відвідувачів</h1>
+      <table id="logTable">
+        <thead>
+          <tr>
+            <th>URL</th>
+            <th>Реферер</th>
+            <th>Роздільна здатність</th>
+            <th>Мова</th>
+            <th>Агент користувача</th>
+            <th>Час</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Дані будуть завантажені динамічно -->
+        </tbody>
+      </table>
+    </div>
+    <script>
+      // Завантаження даних з log.json
+      fetch("log.json")
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Не вдалося завантажити лог-файл");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          const tableBody = document.querySelector("#logTable tbody");
+          data.forEach((entry) => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+              <td>${entry.url}</td>
+              <td>${entry.referer || "Немає"}</td>
+              <td>${entry.screen.width}x${entry.screen.height}</td>
+              <td>${entry.language}</td>
+              <td>${entry.user_agent}</td>
+              <td>${entry.timestamp}</td>
+            `;
+            tableBody.appendChild(row);
+          });
+        })
+        .catch((error) => {
+          console.error("Помилка:", error);
+        });
+    </script>
+  </body>
+</html>

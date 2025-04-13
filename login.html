@@ -11,7 +11,7 @@
     <!-- Заміна div на canvas -->
     <div class="container">
       <h1>Ласкаво просимо в Матрицю. Ти прокинувся?</h1>
-      <form action="validate.php" method="POST" class="login-form">
+      <form id="loginForm" class="login-form">
         <label for="password">Пароль:</label>
         <input type="password" id="password" name="password" required />
         <button type="submit">Увійти</button>
@@ -57,6 +57,21 @@
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
       });
+
+      const correctPassword = "Matrix";
+
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const password = document.getElementById("password").value;
+
+          if (password === correctPassword) {
+            window.location.href = "logs.html";
+          } else {
+            window.location.href = "matrix.html"; // Перенаправлення на matrix.html
+          }
+        });
     </script>
   </body>
 </html>

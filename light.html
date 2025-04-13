@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ласкаво просимо в реальність</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Courier New", Courier, monospace;
+        color: #10b981;
+        background: black;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+      }
+
+      .content {
+        z-index: 1;
+        animation: glitch 1.5s infinite;
+      }
+
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+      }
+
+      p {
+        font-size: 1.2rem;
+        margin: 10px 0;
+        line-height: 1.5;
+      }
+
+      .code {
+        font-size: 1rem;
+        color: #3b82f6;
+        margin-top: 20px;
+        white-space: pre-wrap;
+        text-align: left;
+        background: rgba(0, 0, 0, 0.8);
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+      }
+
+      .button {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #fff;
+        background-color: #10b981;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+      }
+
+      .button:hover {
+        background-color: #0f766e;
+        transform: scale(1.1);
+      }
+
+      @keyframes glitch {
+        0% {
+          text-shadow: 2px 2px #ff0000, -2px -2px #0000ff;
+        }
+        50% {
+          text-shadow: -2px -2px #ff0000, 2px 2px #0000ff;
+        }
+        100% {
+          text-shadow: 2px 2px #ff0000, -2px -2px #0000ff;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <h1>Ласкаво просимо в реальність</h1>
+      <p>Ти зробив свій вибір.</p>
+      <p>Тепер немає дороги назад.</p>
+      <p>Світ, у якому ти жив — брехня.</p>
+      <p>Істина холодна, темна, але вона твоя.</p>
+      <p>Відкрий очі. Розпочни шлях.</p>
+      <div class="code">
+        <code>
+          system: loading truth... decoding reality... access granted.
+        </code>
+      </div>
+      <a href="secret.html" class="button">Дослідити реальність</a>
+    </div>
+  </body>
+</html>
