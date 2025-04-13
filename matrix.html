@@ -30,33 +30,38 @@
 
       .content {
         z-index: 1;
+        padding: 20px;
       }
 
       h1 {
-        font-size: 3rem;
+        font-size: 2.5rem;
         color: #10b981;
       }
 
       p {
-        font-size: 1.5rem;
-        margin: 20px 0;
+        font-size: 1.2rem;
+        margin: 15px 0;
       }
 
       .buttons {
         margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
       }
 
       .pill {
         display: inline-block;
-        padding: 15px 30px;
-        margin: 10px;
-        font-size: 1.2rem;
+        padding: 15px 20px;
+        font-size: 1rem;
         font-weight: bold;
         color: #fff;
         border: none;
         border-radius: 25px;
         cursor: pointer;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-align: center;
+        text-decoration: none;
       }
 
       .pill.red {
@@ -78,6 +83,17 @@
         transform: scale(1.1);
         box-shadow: 0 0 20px #457b9d;
       }
+
+      @media (min-width: 768px) {
+        .buttons {
+          flex-direction: row;
+        }
+
+        .pill {
+          padding: 15px 30px;
+          font-size: 1.2rem;
+        }
+      }
     </style>
   </head>
   <body>
@@ -86,7 +102,6 @@
       <h1>Зроби свій вибір</h1>
       <p>Усе твоє життя привело тебе до цієї миті.</p>
       <p>Перед тобою — два шляхи.</p>
-      <p>Один веде до правди, інший — до забуття.</p>
       <p>
         <strong>Червона пігулка</strong> — це Пробудження.<br />
         Ти побачиш світ таким, яким він є насправді.<br />
